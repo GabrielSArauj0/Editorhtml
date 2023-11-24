@@ -1,10 +1,12 @@
-﻿namespace Editorhtml
+﻿using Editorhtml.Setup;
+
+namespace Editorhtml
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            Menu.Menu.Show();
+            Menu.Show();
         }
     }
 }

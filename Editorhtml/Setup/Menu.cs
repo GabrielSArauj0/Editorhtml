@@ -1,6 +1,6 @@
-using Microsoft.VisualBasic;
+using Editorhtml.Functions;
 
-namespace Editorhtml.Menu
+namespace Editorhtml.Setup
 
 {
     public static class Menu
@@ -14,9 +14,9 @@ namespace Editorhtml.Menu
             
             DrawScreen();
             WriteOptions();
-            //HandleMenuOption();
-
-            var option = short.Parse(Console.ReadLine());
+           
+            var option = short.Parse(Console.ReadLine() ?? string.Empty);
+            HandleMenuOption(option);
         }
 
         public static void DrawScreen()
@@ -44,7 +44,7 @@ namespace Editorhtml.Menu
         public static void WriteOptions()
         {
             Console.SetCursorPosition(3, 2);
-            Console.WriteLine(string.Format("Editor HTML"));
+            Console.WriteLine("Editor HTML");
             Console.SetCursorPosition(3, 3);
             Console.SetCursorPosition(3, 4);
             Console.WriteLine("Selecione uma opção abaixo");
@@ -65,9 +65,15 @@ namespace Editorhtml.Menu
         {
             switch (option)
             {
-                case 0: Console.WriteLine("Editor"); break;
-                case 1: Console.WriteLine("Editor"); break;
-                case 2: Console.WriteLine("Editor"); break;
+                case 0:
+                {
+                    Console.Clear();
+                    Environment.Exit(0);
+                    break;
+                }
+                case 1: Editor.Show(); break;
+                case 2: Console.WriteLine("View"); break;
+                default: Show(); break;
             }
         }
     }
